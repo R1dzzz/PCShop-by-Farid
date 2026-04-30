@@ -313,6 +313,21 @@ kbd {
   transition: background var(--transition);
 }
 
+.new-badge {
+  position: absolute;
+  top: 10px; left: 10px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 99px;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(239,68,68,.35);
+  z-index: 2;
+}
+
 .product-img-wrap {
   display: flex;
   justify-content: center;
@@ -332,6 +347,16 @@ kbd {
   transition: transform 0.3s ease;
 }
 .product-card:hover .product-img { transform: scale(1.06); }
+
+.img-fallback {
+  font-size: 44px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
 
 .product-info { display: flex; flex-direction: column; gap: 3px; }
 .product-name {
