@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PC Shop — POS System</title>
+  <meta name="description" content="PC Shop Point of Sale System by Farid Alfiyansah" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥</text></svg>" />
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-icon">🖥</div>
+    <div>
+      PC Shop
+      <span class="logo-sub">Point of Sale System</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="time-display" id="clock">--:--:--</div>
+    <button id="theme-toggle" class="theme-toggle-btn" title="Toggle theme">
+      <!-- filled by JS -->
+    </button>
+    <div class="shortcut-hint"><kbd>F2</kbd> Checkout</div>
+  </div>
+</header>
+
+<!-- ── Main Layout ──────────────────────────────────────────── -->
+<div class="layout">
+
+  <!-- LEFT: Product Panel -->
+  <section class="left-panel">
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" id="search-input" placeholder="Cari produk..." autocomplete="off" />
+      </div>
+      <div id="category-bar"></div>
+    </div>
+
+    <div class="section-title">Produk</div>
+    <div id="product-grid"></div>
+
+  </section>
+
+  <!-- RIGHT: Cart / Transaction Panel -->
+  <aside class="right-panel">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-products">🛒 Transaksi</button>
+      <button class="tab-btn" id="tab-history">📋 Riwayat</button>
+    </div>
+
+    <!-- Cart Tab -->
+    <div class="tab-panel active" id="panel-products">
+      <div class="cart-header">
+        <div class="cart-title">
+          Keranjang
+          <span class="cart-badge" id="cart-count">0</span>
+        </div>
+        <button class="clear-btn" id="clear-btn">Hapus Semua</button>
+      </div>
+
+      <div id="cart-list">
+        <div class="cart-empty">
+          <span>🛒</span>
+          <p>Keranjang kosong</p>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="payment-section">
+        <div class="total-block">
+          <div class="total-label">Total</div>
+          <div id="total-price">Rp 0</div>
+        </div>
+
+        <div>
+          <div class="pay-label">Jumlah Bayar</div>
+          <input
+            type="text"
+            id="payment-input"
+            placeholder="0"
+            inputmode="numeric"
+          />
+        </div>
+
+        <div class="change-row">
+          <span class="change-label">Kembalian</span>
+          <span id="change-amount">—</span>
+        </div>
+
+        <button id="checkout-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          Selesaikan Transaksi
+          <span class="shortcut-key">F2</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- History Tab -->
+    <div class="tab-panel" id="panel-history">
+      <div id="history-list"></div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- ── Receipt Modal ─────────────────────────────────────────── -->
+<div id="receipt-modal">
+  <div class="modal-box">
+    <div class="modal-top">
+      <div class="modal-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        Transaksi Berhasil!
+      </div>
+      <button id="modal-close">✕</button>
+    </div>
+    <div id="receipt-body"></div>
+  </div>
+</div>
+
+<!-- ── Toast ──────────────────────────────────────────────────── -->
+<div id="toast"></div>
+
+<!-- ── Clock Script ───────────────────────────────────────────── -->
+<script>
+  (function updateClock() {
+    const el = document.getElementById('clock');
+    const tick = () => {
+      el.textContent = new Date().toLocaleTimeString('id-ID', { hour12: false });
+    };
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+<script src="js/app.js"></script>
+</body>
+</html>
