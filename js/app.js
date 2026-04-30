@@ -5,46 +5,96 @@
 
 const PRODUCTS = [
   // ── CPU ──────────────────────────────────────────────────
-  { id: 1,  name: "Intel Core i9-14900K",      category: "CPU",         price: 6200000,  stock: 8,  img: "https://www.intel.com/content/dam/www/central-libraries/us/en/images/2022-11/processor-core-i9-13900k-pdp-badge.png.rendition.intel.web.480.270.png" },
-  { id: 2,  name: "Intel Core i7-14700K",      category: "CPU",         price: 4800000,  stock: 12, img: "https://www.intel.com/content/dam/www/central-libraries/us/en/images/2022-11/processor-core-i7-13700k-pdp-badge.png.rendition.intel.web.480.270.png" },
-  { id: 3,  name: "AMD Ryzen 9 7950X",         category: "CPU",         price: 7500000,  stock: 5,  img: "https://www.amd.com/system/files/2022-09/616656-amd-ryzen-9-7950x-PIB-1260x709.png" },
-  { id: 4,  name: "AMD Ryzen 5 7600X",         category: "CPU",         price: 2900000,  stock: 20, img: "https://www.amd.com/system/files/2022-09/616656-amd-ryzen-5-7600x-PIB-1260x709.png" },
+  { id: 1,  name: "Intel Core i9-14900K",        category: "CPU",         price: 6200000,  stock: 8,
+    img: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&q=80&fit=crop" },
+  { id: 2,  name: "Intel Core i7-14700K",         category: "CPU",         price: 4800000,  stock: 12,
+    img: "https://images.unsplash.com/photo-1555617981-dac3772603c4?w=400&q=80&fit=crop" },
+  { id: 3,  name: "AMD Ryzen 9 7950X",            category: "CPU",         price: 7500000,  stock: 5,
+    img: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&q=80&fit=crop" },
+  { id: 4,  name: "AMD Ryzen 5 7600X",            category: "CPU",         price: 2900000,  stock: 20,
+    img: "https://images.unsplash.com/photo-1555617981-dac3772603c4?w=400&q=80&fit=crop" },
+  { id: 33, name: "Intel Core Ultra 9 285K",      category: "CPU",         price: 8900000,  stock: 5,
+    img: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&q=80&fit=crop" },
+  { id: 34, name: "AMD Ryzen 9 9950X",            category: "CPU",         price: 9200000,  stock: 4,
+    img: "https://images.unsplash.com/photo-1555617981-dac3772603c4?w=400&q=80&fit=crop" },
   // ── GPU ──────────────────────────────────────────────────
-  { id: 5,  name: "NVIDIA RTX 4090 24GB",      category: "GPU",         price: 27000000, stock: 3,  img: "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4090/geforce-ada-4090-product-photo-001.jpg" },
-  { id: 6,  name: "NVIDIA RTX 4070 Ti Super",  category: "GPU",         price: 11500000, stock: 7,  img: "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4070ti-super/geforce-rtx-4070ti-super-product-photo-001.jpg" },
-  { id: 7,  name: "AMD Radeon RX 7900 XTX",   category: "GPU",         price: 15000000, stock: 4,  img: "https://www.amd.com/system/files/2022-11/1207809-amd-radeon-rx-7900-xtx-PIB-1260x709_0.png" },
-  { id: 8,  name: "NVIDIA RTX 4060 8GB",       category: "GPU",         price: 5200000,  stock: 15, img: "https://www.nvidia.com/content/dam/en-zz/Solutions/geforce/ada/rtx-4060/geforce-rtx-4060-product-photo-001.jpg" },
+  { id: 5,  name: "NVIDIA RTX 4090 24GB",         category: "GPU",         price: 27000000, stock: 3,
+    img: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&q=80&fit=crop" },
+  { id: 6,  name: "NVIDIA RTX 4070 Ti Super",     category: "GPU",         price: 11500000, stock: 7,
+    img: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&q=80&fit=crop" },
+  { id: 7,  name: "AMD Radeon RX 7900 XTX",       category: "GPU",         price: 15000000, stock: 4,
+    img: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&q=80&fit=crop" },
+  { id: 8,  name: "NVIDIA RTX 4060 8GB",          category: "GPU",         price: 5200000,  stock: 15,
+    img: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&q=80&fit=crop" },
+  { id: 35, name: "NVIDIA RTX 5090 32GB 🔥",      category: "GPU",         price: 45000000, stock: 2,
+    img: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&q=80&fit=crop" },
+  { id: 36, name: "NVIDIA RTX 5080 16GB",         category: "GPU",         price: 22000000, stock: 5,
+    img: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&q=80&fit=crop" },
+  { id: 37, name: "NVIDIA RTX 5070 Ti 16GB",      category: "GPU",         price: 13500000, stock: 8,
+    img: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&q=80&fit=crop" },
+  { id: 38, name: "AMD Radeon RX 9070 XT 🔥",     category: "GPU",         price: 11000000, stock: 6,
+    img: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=400&q=80&fit=crop" },
   // ── RAM ──────────────────────────────────────────────────
-  { id: 9,  name: "Corsair Vengeance 32GB DDR5",  category: "RAM",      price: 1800000,  stock: 25, img: "https://www.corsair.com/medias/sys_master/images/images/h29/h52/9911411785758/CMK32GX5M2B5200C40-Gallery-Vengeance-DDR5-Black-02.png" },
-  { id: 10, name: "G.Skill Trident Z5 64GB DDR5", category: "RAM",      price: 3500000,  stock: 10, img: "https://www.gskill.com/img/products/ram/trident-z5/1080/gskill-trident-z5-f5-6000j3040g32gx2-tz5k-01.jpg" },
-  { id: 11, name: "Kingston Fury Beast 16GB DDR4",category: "RAM",      price: 750000,   stock: 30, img: "https://media.kingston.com/kingston/product/ktc-product-fury-memory-beast-ddr4-1-zm-lg.png" },
+  { id: 9,  name: "Corsair Vengeance 32GB DDR5",  category: "RAM",         price: 1800000,  stock: 25,
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80&fit=crop" },
+  { id: 10, name: "G.Skill Trident Z5 64GB DDR5", category: "RAM",         price: 3500000,  stock: 10,
+    img: "https://images.unsplash.com/photo-1562976540-1502c2145851?w=400&q=80&fit=crop" },
+  { id: 11, name: "Kingston Fury Beast 16GB DDR4",category: "RAM",         price: 750000,   stock: 30,
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80&fit=crop" },
   // ── Storage ──────────────────────────────────────────────
-  { id: 12, name: "Samsung 990 Pro 2TB NVMe",  category: "Storage",     price: 2800000,  stock: 18, img: "https://image-us.samsung.com/SamsungUS/home/computing/memory-storage/all-storage/06202023/MZ-V9P2T0B-AM-galaxy-tab-S8-ultra-gray-1-mobile.jpg" },
-  { id: 13, name: "WD Black SN850X 1TB",       category: "Storage",     price: 1600000,  stock: 22, img: "https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/internal-drives/wd-black-nvme-ssd/product-brief-wd-black-sn850x-nvme-ssd.pdf.thumb.319.413.png" },
-  { id: 14, name: "Seagate Barracuda 4TB HDD", category: "Storage",     price: 900000,   stock: 35, img: "https://www.seagate.com/www-content/product-images/Barracuda_HDD/barracuda-hard-drive-600x600.png" },
-  { id: 15, name: "Crucial P3 Plus 500GB",     category: "Storage",     price: 550000,   stock: 40, img: "https://m.media-amazon.com/images/I/61+3bIbGFgL._AC_SL1500_.jpg" },
+  { id: 12, name: "Samsung 990 Pro 2TB NVMe",     category: "Storage",     price: 2800000,  stock: 18,
+    img: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=400&q=80&fit=crop" },
+  { id: 13, name: "WD Black SN850X 1TB",          category: "Storage",     price: 1600000,  stock: 22,
+    img: "https://images.unsplash.com/photo-1531492898470-6236b5a74f55?w=400&q=80&fit=crop" },
+  { id: 14, name: "Seagate Barracuda 4TB HDD",    category: "Storage",     price: 900000,   stock: 35,
+    img: "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=400&q=80&fit=crop" },
+  { id: 15, name: "Crucial P3 Plus 500GB",        category: "Storage",     price: 550000,   stock: 40,
+    img: "https://images.unsplash.com/photo-1531492898470-6236b5a74f55?w=400&q=80&fit=crop" },
   // ── Motherboard ──────────────────────────────────────────
-  { id: 16, name: "ASUS ROG Maximus Z790",     category: "Motherboard", price: 8500000,  stock: 4,  img: "https://dlcdnwebimgs.asus.com/gain/1b3e30a6-3b3b-4c2c-8e4c-3e7e3b7c2b2b/w750/h510" },
-  { id: 17, name: "MSI MAG X670E Tomahawk",    category: "Motherboard", price: 4200000,  stock: 8,  img: "https://asset.msi.com/resize/image/global/product/product_1668746534e0e30e0d1abe5d4c7dce5eafb97e6e93.png62405b38c58fe0319279.png/1024.png" },
-  { id: 18, name: "Gigabyte B660M DS3H",       category: "Motherboard", price: 1450000,  stock: 20, img: "https://static.gigabyte.com/StaticFile/Image/Global/f48e0c78f07e62dbf2f6a64b1af6b37c/Product/28467/png/1000" },
+  { id: 16, name: "ASUS ROG Maximus Z790",        category: "Motherboard", price: 8500000,  stock: 4,
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80&fit=crop" },
+  { id: 17, name: "MSI MAG X670E Tomahawk",       category: "Motherboard", price: 4200000,  stock: 8,
+    img: "https://images.unsplash.com/photo-1562976540-1502c2145851?w=400&q=80&fit=crop" },
+  { id: 18, name: "Gigabyte B660M DS3H",          category: "Motherboard", price: 1450000,  stock: 20,
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80&fit=crop" },
+  { id: 39, name: "ASUS ROG Maximus Z890 Apex 🔥",category: "Motherboard", price: 12000000, stock: 3,
+    img: "https://images.unsplash.com/photo-1562976540-1502c2145851?w=400&q=80&fit=crop" },
   // ── PSU ──────────────────────────────────────────────────
-  { id: 19, name: "Corsair RM1000x 1000W Gold",category: "PSU",         price: 2200000,  stock: 10, img: "https://www.corsair.com/medias/sys_master/images/images/h6f/h6f/9183528099870/CP-9020201-NA-Gallery-RM1000x-01.png" },
-  { id: 20, name: "Seasonic Focus GX-850W",    category: "PSU",         price: 1700000,  stock: 14, img: "https://seasonic.com/pub/media/catalog/product/cache/b8e8a3b4d84a9a9e0e5a5f7a3a5c7e6a/f/o/focus-gx-850.png" },
-  { id: 21, name: "EVGA SuperNOVA 750W Gold",  category: "PSU",         price: 1100000,  stock: 18, img: "https://m.media-amazon.com/images/I/71ZsTMSiuTL._AC_SL1500_.jpg" },
+  { id: 19, name: "Corsair RM1000x 1000W Gold",   category: "PSU",         price: 2200000,  stock: 10,
+    img: "https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?w=400&q=80&fit=crop" },
+  { id: 20, name: "Seasonic Focus GX-850W",       category: "PSU",         price: 1700000,  stock: 14,
+    img: "https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?w=400&q=80&fit=crop" },
+  { id: 21, name: "EVGA SuperNOVA 750W Gold",     category: "PSU",         price: 1100000,  stock: 18,
+    img: "https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?w=400&q=80&fit=crop" },
   // ── Case ─────────────────────────────────────────────────
-  { id: 22, name: "Lian Li PC-O11D EVO XL",   category: "Case",        price: 2800000,  stock: 6,  img: "https://www.lian-li.com/wp-content/uploads/2022/01/O11DEVOIMAGE01.jpg" },
-  { id: 23, name: "Fractal Design Torrent",    category: "Case",        price: 2200000,  stock: 9,  img: "https://www.fractal-design.com/app/uploads/2021/10/Torrent_front_Black_01.png" },
-  { id: 24, name: "NZXT H9 Elite",             category: "Case",        price: 3100000,  stock: 5,  img: "https://nzxt.com/assets/cms/34299/1667000765-h9-elite-white-front.png" },
+  { id: 22, name: "Lian Li PC-O11D EVO XL",      category: "Case",        price: 2800000,  stock: 6,
+    img: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400&q=80&fit=crop" },
+  { id: 23, name: "Fractal Design Torrent",       category: "Case",        price: 2200000,  stock: 9,
+    img: "https://images.unsplash.com/photo-1593640408182-31c228b29b4e?w=400&q=80&fit=crop" },
+  { id: 24, name: "NZXT H9 Elite",                category: "Case",        price: 3100000,  stock: 5,
+    img: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400&q=80&fit=crop" },
   // ── Cooling ──────────────────────────────────────────────
-  { id: 25, name: "Noctua NH-D15 Air Cooler",  category: "Cooling",     price: 1250000,  stock: 12, img: "https://noctua.at/pub/media/wysiwyg/products/nh-d15/NH-D15_1.jpg" },
-  { id: 26, name: "ARCTIC Liquid Freezer 360", category: "Cooling",     price: 1800000,  stock: 8,  img: "https://m.media-amazon.com/images/I/61CeJTRNlFL._AC_SL1500_.jpg" },
-  { id: 27, name: "Corsair iCUE H150i Elite",  category: "Cooling",     price: 2400000,  stock: 6,  img: "https://www.corsair.com/medias/sys_master/images/images/hf8/hf8/9182960590878/CW-9060048-WW-Gallery-iCUE-H150i-ELITE-LCD-XT-01.png" },
+  { id: 25, name: "Noctua NH-D15 Air Cooler",     category: "Cooling",     price: 1250000,  stock: 12,
+    img: "https://images.unsplash.com/photo-1555617748-4c2e1e5a5e4d?w=400&q=80&fit=crop" },
+  { id: 26, name: "ARCTIC Liquid Freezer 360",    category: "Cooling",     price: 1800000,  stock: 8,
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop" },
+  { id: 27, name: "Corsair iCUE H150i Elite",     category: "Cooling",     price: 2400000,  stock: 6,
+    img: "https://images.unsplash.com/photo-1555617748-4c2e1e5a5e4d?w=400&q=80&fit=crop" },
   // ── Accessories ──────────────────────────────────────────
-  { id: 28, name: "Logitech MX Master 3S",     category: "Accessories", price: 1100000,  stock: 30, img: "https://resource.logitech.com/content/dam/logitech/en/products/mice/mx-master-3s/gallery/mx-master-3s-mouse-top-view-graphite.png" },
-  { id: 29, name: "Keychron Q3 Mechanical KB", category: "Accessories", price: 1450000,  stock: 20, img: "https://www.keychron.com/cdn/shop/products/Keychron-Q3-QMK-custom-mechanical-keyboard-for-mac-windows-hot-swappable_1200x1200.jpg" },
-  { id: 30, name: "Dell U2723D 27\" Monitor",  category: "Accessories", price: 7200000,  stock: 7,  img: "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/peripherals/monitors/u-series/u2722d/media-gallery/monitor-u2722d-gallery-1.psd?fmt=png-alpha&pscan=auto&scl=1&hei=476&wid=476&qlt=100,1&resMode=sharp2&size=476,476&chrss=full" },
-  { id: 31, name: "Arctic Silver 5 Thermal",   category: "Accessories", price: 75000,    stock: 80, img: "https://m.media-amazon.com/images/I/61H1FVxRs3L._AC_SL1200_.jpg" },
-  { id: 32, name: "Cable Tidy Kit Pro",         category: "Accessories", price: 120000,   stock: 60, img: "https://m.media-amazon.com/images/I/71T7RsQtT2L._AC_SL1500_.jpg" },
+  { id: 28, name: "Logitech MX Master 3S",        category: "Accessories", price: 1100000,  stock: 30,
+    img: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&q=80&fit=crop" },
+  { id: 29, name: "Keychron Q3 Mechanical KB",    category: "Accessories", price: 1450000,  stock: 20,
+    img: "https://images.unsplash.com/photo-1595225476474-87563907a212?w=400&q=80&fit=crop" },
+  { id: 30, name: "Dell U2723D 27\" Monitor",     category: "Accessories", price: 7200000,  stock: 7,
+    img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=400&q=80&fit=crop" },
+  { id: 31, name: "Arctic Silver 5 Thermal",      category: "Accessories", price: 75000,    stock: 80,
+    img: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&q=80&fit=crop" },
+  { id: 32, name: "Cable Tidy Kit Pro",            category: "Accessories", price: 120000,   stock: 60,
+    img: "https://images.unsplash.com/photo-1601524909162-ae8725290836?w=400&q=80&fit=crop" },
+  { id: 40, name: "LG UltraGear 27\" 4K 144Hz",  category: "Accessories", price: 9500000,  stock: 5,
+    img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=400&q=80&fit=crop" },
+  { id: 41, name: "Logitech G Pro X 2 Mouse",     category: "Accessories", price: 1350000,  stock: 18,
+    img: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&q=80&fit=crop" },
 ];
 
 // ── State ────────────────────────────────────────────────────
@@ -84,11 +134,14 @@ function renderProducts() {
   grid.innerHTML = filtered.map((p) => {
     const inCart = cart.find((c) => c.id === p.id);
     const qty = inCart ? inCart.qty : 0;
+    const isNew = [33,34,35,36,37,38,39,40,41].includes(p.id);
     return `
       <div class="product-card" data-id="${p.id}">
         <div class="product-badge">${p.category}</div>
-        <div class="product-img-wrap">
-          <img src="${p.img}" alt="${p.name}" class="product-img" onerror="this.src='https://api.iconify.design/mdi:package-variant.svg'">
+        ${isNew ? '<div class="new-badge">2025</div>' : ''}
+        <div class="product-img-wrap" id="imgwrap-${p.id}">
+          <img src="${p.img}" alt="${p.name}" class="product-img"
+            onerror="this.style.display='none';document.getElementById('imgwrap-${p.id}').innerHTML='<span class=\\'img-fallback\\'>' + {'CPU':'🔲','GPU':'🎮','RAM':'💾','Storage':'💿','Motherboard':'🖥️','PSU':'⚡','Case':'🗄️','Cooling':'❄️','Accessories':'🖱️'}['${p.category}'] + '</span>'">
         </div>
         <div class="product-info">
           <div class="product-name">${p.name}</div>
