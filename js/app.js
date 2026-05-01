@@ -266,63 +266,51 @@ function cartItemHTML(c) {
     </div>`;
 }
 
+function updateChangeDisplay(el, payInputEl, total) {
+  if (!el) return;
+  const raw = (payInputEl?.value || "").replace(/\./g, "");
+  const paid = parseInt(raw) || 0;
+  const diff = paid - total;
+  if (paid > 0) {
+    el.textContent = diff >= 0 ? formatIDR(diff) : "Kurang " + formatIDR(Math.abs(diff));
+    el.style.color  = diff >= 0 ? "var(--accent)" : "var(--danger)";
+  } else {
+    el.textContent = "—";
+    el.style.color  = "var(--text-muted)";
+  }
+}
+
 function renderCart() {
-  const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  const total    = cart.reduce((s, c) => s + c.price * c.qty, 0);
   const totalQty = cart.reduce((s, c) => s + c.qty, 0);
-  const emptyHTML = `<div class="cart-empty"><span>🛒</span><p>Keranjang kosong</p></div>`;
-  const itemsHTML = cart.length === 0 ? emptyHTML : cart.map(cartItemHTML).join("");
+  const emptyHTML  = `<div class="cart-empty"><span>🛒</span><p>Keranjang kosong</p></div>`;
+  const itemsHTML  = cart.length === 0 ? emptyHTML : cart.map(cartItemHTML).join("");
 
-  // ── Desktop ───────────────────────────────────────────────
-  const list     = $("#cart-list");
-  const totalEl  = $("#total-price");
-  const countEl  = $("#cart-count");
-  const changeEl = $("#change-amount");
+  // ── Desktop ──────────────────────────────────────────────
+  const dList  = $("#cart-list");
+  const dTotal = $("#total-price");
+  const dCount = $("#cart-count");
+  if (dList)  dList.innerHTML  = itemsHTML;
+  if (dTotal) dTotal.textContent = formatIDR(total);
+  if (dCount) dCount.textContent = totalQty;
+  updateChangeDisplay($("#change-amount"), $("#payment-input"), total);
 
-  if (list)    list.innerHTML = itemsHTML;
-  if (countEl) countEl.textContent = totalQty;
-  if (totalEl) totalEl.textContent = formatIDR(total);
+  // ── Mobile Drawer ────────────────────────────────────────
+  const mList  = $("#cart-list-mobile");
+  const mTotal = $("#total-price-mobile");
+  const mCount = $("#cart-count-mobile");
+  if (mList)  mList.innerHTML  = itemsHTML;
+  if (mTotal) mTotal.textContent = formatIDR(total);
+  if (mCount) mCount.textContent = totalQty;
+  updateChangeDisplay($("#change-amount-mobile"), $("#payment-input-mobile"), total);
 
-  const payStr = ($("#payment-input")?.value || "").replace(/\./g, "");
-  const pay = parseInt(payStr) || 0;
-  const change = pay - total;
-  if (changeEl) {
-    if (pay > 0) {
-      changeEl.textContent = change >= 0 ? formatIDR(change) : `Kurang ${formatIDR(Math.abs(change))}`;
-      changeEl.style.color = change >= 0 ? "var(--accent)" : "var(--danger)";
-    } else {
-      changeEl.textContent = "—";
-      changeEl.style.color = "var(--text-muted)";
-    }
-  }
-
-  // ── Mobile Drawer ─────────────────────────────────────────
-  const mList    = $("#cart-list-mobile");
-  const mTotal   = $("#total-price-mobile");
-  const mCount   = $("#cart-count-mobile");
-  const mChangeEl = $("#change-amount-mobile");
-  const fabBadge = $("#fab-badge");
-
-  if (mList)    mList.innerHTML = itemsHTML;
-  if (mTotal)   mTotal.textContent = formatIDR(total);
-  if (mCount)   mCount.textContent = totalQty;
-  if (fabBadge) {
-    fabBadge.textContent = totalQty;
-    fabBadge.classList.remove("bump");
-    void fabBadge.offsetWidth; // reflow
-    fabBadge.classList.add("bump");
-  }
-
-  const mPayStr = ($("#payment-input-mobile")?.value || "").replace(/\./g, "");
-  const mPay = parseInt(mPayStr) || 0;
-  const mDiff = mPay - total;
-  if (mChangeEl) {
-    if (mPay > 0) {
-      mChangeEl.textContent = mDiff >= 0 ? formatIDR(mDiff) : `Kurang ${formatIDR(Math.abs(mDiff))}`;
-      mChangeEl.style.color = mDiff >= 0 ? "var(--accent)" : "var(--danger)";
-    } else {
-      mChangeEl.textContent = "—";
-      mChangeEl.style.color = "var(--text-muted)";
-    }
+  // FAB badge
+  const fab = $("#fab-badge");
+  if (fab) {
+    fab.textContent = totalQty;
+    fab.classList.remove("bump");
+    void fab.offsetWidth;
+    fab.classList.add("bump");
   }
 }
 
