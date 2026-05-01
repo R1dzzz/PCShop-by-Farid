@@ -1,0 +1,281 @@
+/* ============================================================
+   PC Shop — Landing Page Styles
+   Author: Farid Alfiyansah (No Absen: 26)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg: #080b12;
+  --surface: #101522;
+  --surface2: #181e2e;
+  --border: #232b40;
+  --accent: #3b82f6;
+  --accent2: #22d3ee;
+  --accent-glow: rgba(59,130,246,.25);
+  --text: #e8eaf2;
+  --text-muted: #5b6478;
+  --text-dim: #8b95ab;
+  --radius: 16px;
+  --font: 'DM Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --transition: 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Animated Background Particles ─────────────────────────── */
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.particles span {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatParticle 8s infinite ease-in-out;
+}
+.particles span:nth-child(1)  { top: 10%; left: 15%; animation-delay: 0s; }
+.particles span:nth-child(2)  { top: 25%; left: 80%; animation-delay: 1s; background: var(--accent2); }
+.particles span:nth-child(3)  { top: 60%; left: 10%; animation-delay: 2s; }
+.particles span:nth-child(4)  { top: 75%; left: 70%; animation-delay: 3s; background: var(--accent2); }
+.particles span:nth-child(5)  { top: 40%; left: 50%; animation-delay: 4s; }
+.particles span:nth-child(6)  { top: 85%; left: 30%; animation-delay: 1.5s; background: var(--accent2); }
+.particles span:nth-child(7)  { top: 15%; left: 60%; animation-delay: 2.5s; }
+.particles span:nth-child(8)  { top: 50%; left: 90%; animation-delay: 3.5s; background: var(--accent2); }
+.particles span:nth-child(9)  { top: 30%; left: 25%; animation-delay: 5s; }
+.particles span:nth-child(10) { top: 65%; left: 45%; animation-delay: 6s; background: var(--accent2); }
+
+@keyframes floatParticle {
+  0%, 100% { opacity: 0; transform: translateY(0) scale(0); }
+  20% { opacity: 0.6; transform: translateY(-20px) scale(1); }
+  80% { opacity: 0.3; transform: translateY(-80px) scale(0.5); }
+}
+
+/* ── Background Gradient Orbs ──────────────────────────────── */
+body::before {
+  content: "";
+  position: fixed;
+  top: -20%; left: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(59,130,246,.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 12s infinite ease-in-out alternate;
+}
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -20%; right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(34,211,238,.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 14s infinite ease-in-out alternate-reverse;
+}
+@keyframes orbFloat {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(30px, -30px); }
+}
+
+/* ── Landing Card ──────────────────────────────────────────── */
+.landing-container {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.landing-card {
+  background: linear-gradient(150deg, #141a2a 0%, #0e1420 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px 36px;
+  text-align: center;
+  box-shadow: 0 8px 48px rgba(0,0,0,.5), 0 0 0 1px rgba(59,130,246,.08);
+  position: relative;
+  overflow: hidden;
+}
+.landing-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+  background-size: 200% 100%;
+  animation: gradientShift 3s infinite linear;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.landing-logo {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 36px;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 24px rgba(59,130,246,.3);
+  animation: logoPulse 3s infinite ease-in-out;
+}
+@keyframes logoPulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(59,130,246,.3); transform: scale(1); }
+  50% { box-shadow: 0 6px 32px rgba(59,130,246,.5); transform: scale(1.03); }
+}
+
+.landing-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -1px;
+  margin-bottom: 4px;
+}
+.landing-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+/* ── Profile Box ───────────────────────────────────────────── */
+.profile-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: linear-gradient(150deg, #1c2338 0%, #161d2e 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.profile-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(59,130,246,.1);
+}
+.profile-avatar {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(59,130,246,.3);
+}
+.profile-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: left;
+}
+.profile-meta {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.profile-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent2);
+  background: rgba(34,211,238,.1);
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid rgba(34,211,238,.2);
+}
+
+/* ── Description ───────────────────────────────────────────── */
+.landing-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── CTA Button ────────────────────────────────────────────── */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+  text-decoration: none;
+  letter-spacing: .3px;
+  box-shadow: 0 4px 24px rgba(59,130,246,.35);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.cta-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(59,130,246,.5);
+}
+.cta-button:hover::before { opacity: 1; }
+.cta-button:active { transform: translateY(0) scale(.98); }
+.cta-button svg {
+  transition: transform var(--transition);
+}
+.cta-button:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Fade In Animation ─────────────────────────────────────── */
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .landing-card { padding: 36px 24px; }
+  .landing-title { font-size: 26px; }
+  .profile-box { flex-direction: column; gap: 10px; padding: 14px; }
+  .profile-info { text-align: center; }
+  .profile-meta { justify-content: center; }
+}
