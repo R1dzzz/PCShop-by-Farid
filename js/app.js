@@ -319,7 +319,10 @@ function renderCart() {
 function checkout() {
   if (cart.length === 0) return showToast("Keranjang kosong!");
   const total = cart.reduce((s, c) => s + c.price * c.qty, 0);
-  const payStr = $("#payment-input").value.replace(/\./g, "");
+  // Support both desktop and mobile payment inputs
+  const isMobile = window.innerWidth <= 768;
+  const payInputEl = isMobile ? $("#payment-input-mobile") : $("#payment-input");
+  const payStr = (payInputEl?.value || "").replace(/\./g, "");
   const pay = parseInt(payStr) || 0;
   if (pay < total) return showToast("Pembayaran kurang!");
 
@@ -345,6 +348,7 @@ function checkout() {
   showReceipt(tx);
   cart = [];
   $("#payment-input").value = "";
+  if ($("#payment-input-mobile")) $("#payment-input-mobile").value = "";
   renderAll();
 }
 
@@ -627,10 +631,13 @@ function init() {
 }
 
 function switchTab(tab) {
-  $$(".tab-btn").forEach((b) => b.classList.remove("active"));
-  $$(".tab-panel").forEach((p) => p.classList.remove("active"));
-  $(`#tab-${tab}`).classList.add("active");
-  $(`#panel-${tab}`).classList.add("active");
+  // Only target desktop right-panel tabs (not mobile drawer)
+  const rightPanel = $("#right-panel");
+  if (!rightPanel) return;
+  rightPanel.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+  rightPanel.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
+  $(`#tab-${tab}`)?.classList.add("active");
+  $(`#panel-${tab}`)?.classList.add("active");
   if (tab === "history") renderHistory();
 }
 
